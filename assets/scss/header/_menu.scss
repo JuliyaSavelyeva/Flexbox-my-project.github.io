@@ -1,0 +1,106 @@
+.header-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    @include bg-color(0.3);
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        @media (min-width: $small + 1) {
+            display: flex;
+        }
+
+        @media (max-width: $small) {
+            display: none;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+
+        &.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-item {
+
+            @media (max-width: $small) {
+                &:last-child {
+                    margin-bottom: 5 px;
+                }
+            }
+
+            a {
+                display: block;
+                margin: 5px;
+                padding: 10px 15px;
+                border-radius: 4px;
+
+                @media (max-width: $small) {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+
+                &:hover,
+                &:focus {
+                    @include bg-color(0.3);
+                    @include text-shadow;
+                }
+            }
+
+            &.active a {
+                color: $main-color-highlighted;
+
+                @include bg-color(0.4);
+                @include text-shadow;
+            }
+        }
+    }
+
+    &__btn {
+        flex-direction: column;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        @include bg-color(0.3);
+
+        @media (min-width: $small + 1) {
+            display: none;
+        }
+
+        @media (max-width: $small) {
+            display: flex;
+        }
+
+        &-row {
+            position: relative;
+            width: 60%;
+            height: 2px;
+            margin: 2px 0;
+            transition: 0.5s;
+            background-color: $light-color;
+        }
+
+        &.active .header-menu__btn-row {
+            &:first-child {
+                top: 6px;
+                transform: rotate(-135deg);
+            }
+
+            &:last-child {
+                top: -6px;
+                transform: rotate(-225deg);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+        }
+    }
+}

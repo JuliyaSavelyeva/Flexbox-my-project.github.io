@@ -11,7 +11,7 @@ const mqpacker = require('css-mqpacker');
 
 const plugins = [
   autoprefixer({
-    browsers: [
+    overrideBrowserslist: [
       'last 5 versions',
       '> 1%'
     ],
